@@ -6,19 +6,27 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <video
           className="w-full h-full object-cover"
-          style={{ opacity: 0.4 }}
+          style={{ opacity: 0.85 }}
           src="/hero-video.mp4"
           autoPlay
           loop
           muted
           playsInline
         />
-        {/* Gradiente sobre el video para garantizar legibilidad del texto */}
+        {/* Degradado más ligero: deja ver el video pero mantiene legibilidad del texto */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(160deg, rgba(10,79,143,0.72) 0%, rgba(2,18,40,0.82) 55%, rgba(10,79,143,0.55) 100%)',
+              'linear-gradient(160deg, rgba(10,79,143,0.35) 0%, rgba(2,18,40,0.45) 55%, rgba(10,79,143,0.25) 100%)',
+          }}
+        />
+        {/* Viñeta sutil para reforzar el contraste del texto central sin tapar el video */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse at center, rgba(2,18,40,0) 35%, rgba(2,18,40,0.35) 100%)',
           }}
         />
       </div>
