@@ -43,17 +43,18 @@ export default function HeroSection() {
       {/* ── Navbar superior con logo ── */}
       <nav className="absolute top-0 left-0 right-0 z-20 px-4 py-4 sm:px-6 sm:py-5">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          {/* Logo en chip blanco esmerilado para que el azul destaque sobre el fondo oscuro */}
+          {/* Logo en chip azul translúcido (glassmorphism) con logo en blanco */}
           <div
             className="flex items-center rounded-xl px-3 py-1.5 sm:px-4 sm:py-2"
             style={{
-              background: 'rgba(255,255,255,0.92)',
-              backdropFilter: 'blur(8px)',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.18)',
+              background: 'rgba(26,111,196,0.25)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255,255,255,0.18)',
+              boxShadow: '0 4px 20px rgba(2,18,40,0.25)',
             }}
           >
             <img
-              src="/logo-azul.png"
+              src="/logo-blanco.png"
               alt="Hospital Angeles — Centro de Neurociencias Avanzadas"
               className="h-8 sm:h-10 w-auto"
             />
