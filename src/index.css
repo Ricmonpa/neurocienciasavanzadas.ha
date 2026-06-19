@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neuro-blue: #0a4f8f;
+  --color-neuro-blue-light: #1a6fc4;
+  --color-neuro-blue-pale: #e8f1fb;
+  --color-neuro-gray: #1f2937;
+  --color-neuro-gray-mid: #6b7280;
+  --color-neuro-gray-light: #f8fafc;
+  --font-display: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #ffffff;
+  color: #1f2937;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes drawLine {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(10, 79, 143, 0.3); }
+  50%       { box-shadow: 0 0 0 12px rgba(10, 79, 143, 0); }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.8s ease forwards; }
+.animate-fade-in    { animation: fadeIn 1.2s ease forwards; }
+.delay-200  { animation-delay: 0.2s; opacity: 0; }
+.delay-400  { animation-delay: 0.4s; opacity: 0; }
+.delay-600  { animation-delay: 0.6s; opacity: 0; }
+.delay-800  { animation-delay: 0.8s; opacity: 0; }
+.delay-1000 { animation-delay: 1.0s; opacity: 0; }
+
+.orbit-card:hover .orbit-icon {
+  animation: pulse-ring 1.5s ease infinite;
+}
