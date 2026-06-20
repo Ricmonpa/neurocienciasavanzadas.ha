@@ -27,23 +27,15 @@ export default function Header() {
         className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-center md:justify-between transition-all duration-500"
         style={{ paddingTop: scrolled ? '0.6rem' : '1rem', paddingBottom: scrolled ? '0.6rem' : '1rem' }}
       >
-        {/* Logo + chip falso. Arriba: chip azul translúcido + logo blanco.
-            Scroll: chip se desvanece + logo azul para legibilidad sobre blanco. */}
-        <a
-          href="#top"
-          className="flex items-center rounded-2xl transition-all duration-500"
-          style={{
-            background: scrolled ? 'rgba(26,111,196,0)' : 'rgba(26,111,196,0.55)',
-            backdropFilter: scrolled ? 'blur(0px)' : 'blur(10px)',
-            border: scrolled
-              ? '1px solid rgba(255,255,255,0)'
-              : '1px solid rgba(255,255,255,0.22)',
-            boxShadow: scrolled ? 'none' : '0 4px 20px rgba(2,18,40,0.25)',
-            padding: scrolled ? '0.25rem 0.5rem' : '0.75rem 1.5rem',
-          }}
-        >
-          {/* Dos imágenes superpuestas con fundido cruzado para cambiar de color sin parpadeo */}
-          <span className="relative inline-flex h-11 sm:h-14">
+        {/* Logo sin fondo. Arriba: logo blanco (sobre el hero oscuro).
+            Scroll: logo azul para legibilidad sobre la sección blanca. */}
+        <a href="#top" className="flex items-center transition-all duration-500">
+          {/* Dos imágenes superpuestas con fundido cruzado para cambiar de color sin parpadeo.
+              Sombra sutil solo arriba, para que el logo blanco se lea sobre el video. */}
+          <span
+            className="relative inline-flex h-11 sm:h-14 transition-all duration-500"
+            style={{ filter: scrolled ? 'none' : 'drop-shadow(0 2px 10px rgba(2,18,40,0.45))' }}
+          >
             <img
               src="/logo-blanco.png"
               alt="Hospital Angeles — Centro de Neurociencias Avanzadas"
