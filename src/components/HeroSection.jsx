@@ -40,41 +40,6 @@ export default function HeroSection() {
         }}
       />
 
-      {/* ── Navbar superior con logo ── */}
-      <nav className="absolute top-0 left-0 right-0 z-20 px-4 py-4 sm:px-6 sm:py-5">
-        <div className="max-w-6xl mx-auto flex items-center justify-center md:justify-between">
-          {/* Logo en chip azul translúcido (glassmorphism) con logo en blanco */}
-          <div
-            className="flex items-center rounded-2xl px-6 py-3 sm:px-7 sm:py-4"
-            style={{
-              background: 'rgba(26,111,196,0.55)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255,255,255,0.22)',
-              boxShadow: '0 4px 20px rgba(2,18,40,0.25)',
-            }}
-          >
-            <img
-              src="/logo-blanco.png"
-              alt="Hospital Angeles — Centro de Neurociencias Avanzadas"
-              className="h-14 sm:h-16 w-auto"
-            />
-          </div>
-
-          {/* Links de navegación */}
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/90">
-            <a href="#modelo" className="hover:text-white transition-colors">El Modelo</a>
-            <a href="#viaje" className="hover:text-white transition-colors">El Viaje del Paciente</a>
-            <a href="#equipo" className="hover:text-white transition-colors">Equipo</a>
-            <a
-              href="#contacto"
-              className="px-5 py-2 rounded-full border border-white/30 hover:border-white/60 hover:bg-white/10 transition-all"
-            >
-              Agendar cita
-            </a>
-          </div>
-        </div>
-      </nav>
-
       {/* ── Contenido central ── */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
 
