@@ -128,7 +128,7 @@ export default function HeroSection() {
       >
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-5 grid grid-cols-2 gap-x-4 gap-y-3 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-12 sm:gap-y-4">
           {[
-            { value: '+20', label: 'Especialistas Certificados' },
+            { value: '+600', label: 'Especialistas Certificados' },
             { value: '4', label: 'Órbitas Clínicas Integradas' },
             { value: '98%', label: 'Satisfacción de Pacientes' },
             { value: 'IA', label: 'Diagnóstico Asistido' },
