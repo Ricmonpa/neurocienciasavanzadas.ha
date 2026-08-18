@@ -44,17 +44,17 @@ export default function Header() {
         {/* Logo: blanco sobre el hero, azul al hacer scroll / menú abierto */}
         <a href="#top" onClick={() => setMenuOpen(false)} className="flex items-center transition-all duration-500">
           <span
-            className="relative inline-flex h-16 sm:h-20 transition-all duration-500"
+            className="relative inline-flex h-9 sm:h-11 transition-all duration-500"
             style={{ filter: darkText ? 'none' : 'drop-shadow(0 2px 10px rgba(2,18,40,0.45))' }}
           >
             <img
-              src="/logo-blanco.png"
+              src="/logo-oficial-blanco.png"
               alt="Hospital Angeles — Centro de Neurociencias Avanzadas"
               className="h-full w-auto transition-opacity duration-500"
               style={{ opacity: darkText ? 0 : 1 }}
             />
             <img
-              src="/logo-azul.png"
+              src="/logo-oficial.png"
               alt=""
               aria-hidden="true"
               className="absolute inset-0 h-full w-auto transition-opacity duration-500"
