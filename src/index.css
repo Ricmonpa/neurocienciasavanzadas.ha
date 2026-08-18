@@ -14,6 +14,16 @@
   box-sizing: border-box;
 }
 
+/* Navegación por anclas: scroll suave y margen para no quedar bajo el header fijo */
+html {
+  scroll-behavior: smooth;
+}
+
+section[id],
+[id="perfil-doctor"] {
+  scroll-margin-top: 84px;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
