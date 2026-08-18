@@ -2,8 +2,11 @@ import { useState, useEffect } from 'react'
 
 const LINKS = [
   { href: '#modelo', label: 'El Modelo' },
-  { href: '#viaje', label: 'El Viaje del Paciente' },
+  { href: '#viaje', label: 'El Viaje' },
+  { href: '#especialidades', label: 'Especialidades' },
+  { href: '#tecnologia', label: 'Tecnología' },
   { href: '#equipo', label: 'Equipo' },
+  { href: '#revista', label: 'Revista' },
 ]
 
 export default function Header() {
@@ -65,7 +68,7 @@ export default function Header() {
 
         {/* Navegación escritorio */}
         <div
-          className="hidden md:flex items-center gap-8 text-sm font-medium transition-colors duration-500"
+          className="hidden lg:flex items-center gap-6 text-[13px] font-medium transition-colors duration-500"
           style={{ color: scrolled ? 'rgba(31,41,55,0.85)' : 'rgba(255,255,255,0.9)' }}
         >
           {LINKS.map((l) => (
@@ -91,7 +94,7 @@ export default function Header() {
           onClick={() => setMenuOpen((v) => !v)}
           aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={menuOpen}
-          className="md:hidden relative w-10 h-10 flex items-center justify-center -mr-1"
+          className="lg:hidden relative w-10 h-10 flex items-center justify-center -mr-1"
         >
           <span className="relative w-6 h-5 block">
             {/* 3 líneas que se transforman en X */}
@@ -124,7 +127,7 @@ export default function Header() {
 
       {/* Panel del menú móvil */}
       <div
-        className="md:hidden overflow-hidden transition-all duration-400"
+        className="lg:hidden overflow-hidden transition-all duration-400"
         style={{
           maxHeight: menuOpen ? '420px' : '0px',
           opacity: menuOpen ? 1 : 0,

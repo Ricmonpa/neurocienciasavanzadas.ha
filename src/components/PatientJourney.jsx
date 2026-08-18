@@ -201,7 +201,7 @@ export default function PatientJourney() {
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6" style={{ background: '#ffffff' }}>
+    <section id="viaje" className="py-16 sm:py-24 px-4 sm:px-6" style={{ background: '#ffffff' }}>
       <div className="max-w-6xl mx-auto">
 
         {/* Encabezado de sección */}
