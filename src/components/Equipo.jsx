@@ -36,10 +36,10 @@ function Avatar({ name, size = 64, photo }) {
 }
 
 const CUERPO_MEDICO = [
-  { name: 'Dr. Victor David López García', role: 'Neurocirugía' },
-  { name: 'Dr. Manuel Rodríguez García', role: 'Neurocirugía' },
-  { name: 'Dr. Sergio Soriano Solís', role: 'Neurocirugía' },
-  { name: 'Dr. Ivan Ledezma Bautista', role: 'Neurocirugía' },
+  { name: 'Dr. Victor David López García', role: 'Neurocirugía', photo: '/dr-lopez.png' },
+  { name: 'Dr. Manuel Rodríguez García', role: 'Neurocirugía', photo: '/dr-rodriguez.png' },
+  { name: 'Dr. Sergio Soriano Solís', role: 'Neurocirugía', photo: '/dr-soriano-solis.png' },
+  { name: 'Dr. Ivan Ledezma Bautista', role: 'Neurocirugía', photo: '/dr-ledezma.png' },
 ]
 
 const APOYO = [
@@ -72,7 +72,7 @@ export default function Equipo() {
           style={{ background: 'linear-gradient(145deg, #ffffff, #eef4fb)', border: '1px solid rgba(10,79,143,0.12)', boxShadow: '0 20px 60px rgba(10,79,143,0.08)' }}
         >
           <div className="flex items-center gap-5 md:block">
-            <Avatar name="Dr. José Antonio Soriano Sánchez" size={110} />
+            <Avatar name="Dr. José Antonio Soriano Sánchez" size={130} photo="/dr-soriano.png" />
           </div>
           <div>
             <span className="inline-block text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full mb-3"
@@ -103,7 +103,7 @@ export default function Equipo() {
           {CUERPO_MEDICO.map((m) => (
             <div key={m.name} className="bg-white rounded-2xl p-5 border border-gray-100 flex flex-col items-center text-center"
               style={{ boxShadow: '0 4px 16px rgba(10,79,143,0.05)' }}>
-              <Avatar name={m.name} size={72} />
+              <Avatar name={m.name} size={72} photo={m.photo} />
               <h4 className="font-semibold text-gray-900 text-sm mt-3 leading-tight">{m.name}</h4>
               <p className="text-xs text-gray-500 mt-1">{m.role}</p>
             </div>

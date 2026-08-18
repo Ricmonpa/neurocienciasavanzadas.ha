@@ -31,17 +31,17 @@ export default function DoctorProfile() {
           style={{ background: 'radial-gradient(circle at 78% 25%, rgba(26,111,196,0.4), transparent 55%), radial-gradient(circle at 15% 80%, rgba(10,79,143,0.35), transparent 55%)' }} />
         <div className="relative max-w-5xl mx-auto grid md:grid-cols-[auto_1fr] gap-8 md:gap-12 items-center">
 
-          {/* Marco perfil a llenar */}
-          <div className="mx-auto md:mx-0 rounded-3xl flex items-center justify-center"
+          {/* Foto del especialista */}
+          <img
+            src="/dr-soriano.png"
+            alt="Dr. José Antonio Soriano Sánchez"
+            className="mx-auto md:mx-0 rounded-3xl object-cover"
             style={{
-              width: 200, height: 240,
-              background: 'rgba(26,111,196,0.18)', backdropFilter: 'blur(8px)',
-              border: '1.5px solid rgba(255,255,255,0.35)', boxShadow: '0 12px 48px rgba(2,18,40,0.5)',
-            }}>
-            <svg width="96" height="96" viewBox="0 0 24 24" fill="rgba(255,255,255,0.55)">
-              <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z" />
-            </svg>
-          </div>
+              width: 220, height: 264,
+              border: '1.5px solid rgba(255,255,255,0.25)',
+              boxShadow: '0 12px 48px rgba(2,18,40,0.5)',
+            }}
+          />
 
           {/* Datos */}
           <div className="text-center md:text-left text-white">
