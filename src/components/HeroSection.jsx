@@ -84,7 +84,8 @@ export default function HeroSection() {
 
         {/* CTAs */}
         <div className="animate-fade-in-up delay-800 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center w-full max-w-sm sm:max-w-none mx-auto" style={{ opacity: 0 }}>
-          <button
+          <a
+            href="#modelo"
             className="group relative inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:py-4 rounded-full font-semibold text-base text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             style={{
               background: 'linear-gradient(135deg, #1a6fc4 0%, #0a4f8f 100%)',
@@ -105,13 +106,14 @@ export default function HeroSection() {
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{ background: 'linear-gradient(135deg, #2a80d8 0%, #1a5faa 100%)' }}
             />
-          </button>
+          </a>
 
-          <button
+          <a
+            href="#equipo"
             className="inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:py-4 rounded-full font-semibold text-base text-white border border-white/30 backdrop-blur-sm transition-all duration-300 hover:border-white/60 hover:bg-white/10"
           >
             Ver el equipo
-          </button>
+          </a>
         </div>
 
         {/* Indicador scroll */}
