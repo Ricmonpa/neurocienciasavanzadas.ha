@@ -131,13 +131,12 @@ export default function Equipo() {
         {/* Innovación — N3 Labs */}
         <div className="rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left"
           style={{ background: 'linear-gradient(145deg, #021228, #0a4f8f)', color: '#fff' }}>
-          <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
-            style={{ background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)' }}>
-            <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" strokeWidth="1.8">
-              <path d="M12 2a4 4 0 00-4 4v1a4 4 0 000 8v1a4 4 0 008 0v-1a4 4 0 000-8V6a4 4 0 00-4-4z" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="12" cy="12" r="1.5" fill="#93c5fd" />
-            </svg>
-          </div>
+          <img
+            src="/engel-fonseca.jpg"
+            alt="Engel Fonseca Mallen"
+            className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover flex-shrink-0"
+            style={{ border: '1px solid rgba(255,255,255,0.25)', boxShadow: '0 8px 24px rgba(2,18,40,0.4)' }}
+          />
           <div className="flex-1">
             <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#7fb0e6' }}>Innovación con IA Médica</span>
             <h3 className="font-bold text-xl sm:text-2xl mt-1">Engel Fonseca Mallen</h3>
