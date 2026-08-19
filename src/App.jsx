@@ -9,6 +9,7 @@ import Equipo from './components/Equipo'
 import DoctorProfile from './components/DoctorProfile'
 import Revista from './components/Revista'
 import Contacto from './components/Contacto'
+import WhatsAppFloat from './components/WhatsAppFloat'
 import './index.css'
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
         <Revista />
         <Contacto />
       </main>
+      <WhatsAppFloat />
     </>
   )
 }
