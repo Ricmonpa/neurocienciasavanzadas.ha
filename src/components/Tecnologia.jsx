@@ -1,10 +1,12 @@
 // Sección "Tecnología e Innovación"
 
 const CAPACIDADES = [
-  { t: 'Robot Mazor X', d: 'Cirugía de columna guiada por el robot Mazor X — iniciando la era de la cirugía robótica en el Hospital Angeles Health System.' },
-  { t: 'Neuroimagen de precisión', d: 'Resonancia y tomografía de alta resolución para diagnósticos milimétricos.' },
-  { t: 'IA diagnóstica', d: 'Inteligencia artificial que asiste la detección temprana y la planeación quirúrgica.' },
-  { t: 'Anatomía digital', d: 'Modelado 3D y planeación virtual — respaldados por la embajada UNESCO de Anatomía Digital.' },
+  { t: 'Robot Mazor X', d: 'Cirugía de columna guiada por robot — iniciando la era de la cirugía robótica en el Hospital Angeles Health System.' },
+  { t: 'Neuronavegación quirúrgica', d: 'Monitoreo neurofisiológico transoperatorio y cirugía con paciente despierto para máxima precisión y seguridad.' },
+  { t: 'Neurofisiología clínica', d: 'EMG, potenciales evocados, otoneurología, audiología, estudios de sueño y estimulación magnética transcraneal (TMS).' },
+  { t: 'Neuroimagen y Neurosonología', d: 'Resonancia magnética y ultrasonido de alta resolución para diagnósticos milimétricos.' },
+  { t: 'Medicina Nuclear e Imagen Molecular', d: 'Estudios funcionales que revelan la actividad del sistema nervioso a nivel molecular.' },
+  { t: 'IA y Anatomía Digital', d: 'Inteligencia artificial y modelado 3D — respaldados por la embajada UNESCO de Anatomía Digital.' },
 ]
 
 export default function Tecnologia() {

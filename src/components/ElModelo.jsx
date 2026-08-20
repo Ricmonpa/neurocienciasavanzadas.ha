@@ -1,4 +1,13 @@
-// Sección "El Modelo" — manifiesto + diferenciadores clínicos
+// Sección "El Modelo" — manifiesto + diferenciadores + principios rectores
+// Contenido alineado al Documento Rector del Centro de Neurociencias (HAP).
+
+const PRINCIPIOS = [
+  { n: '01', t: 'Atención centrada en el paciente', d: 'El paciente es el eje de toda decisión clínica, organizacional y estratégica.' },
+  { n: '02', t: 'Excelencia clínica', d: 'Estándares internacionales, evidencia científica y evaluación continua de resultados.' },
+  { n: '03', t: 'Integración multidisciplinaria', d: 'Decisiones colegiadas y trabajo en red entre todas las especialidades.' },
+  { n: '04', t: 'Liderazgo médico institucional', d: 'Dirección por líderes con reconocimiento clínico, académico y ético.' },
+  { n: '05', t: 'Innovación, docencia e investigación', d: 'La práctica clínica articulada con la generación de conocimiento.' },
+]
 
 const DIFERENCIADORES = [
   {
@@ -38,8 +47,10 @@ export default function ElModelo() {
               ante la enfermedad a la <strong className="text-gray-800">gestión integral de la salud cerebral</strong>.
             </p>
             <p className="text-gray-500 text-base leading-relaxed">
-              Integramos diagnóstico, decisión colegiada e innovación terapéutica en un solo ecosistema
-              clínico, donde cada especialidad converge alrededor del paciente.
+              El Centro no opera como una suma de especialidades aisladas, sino como un
+              <strong className="text-gray-700"> ecosistema clínico integrado</strong>, centrado en el
+              paciente y sustentado en la colaboración médica estructurada, con estándares comparables a
+              los principales centros de neurociencias a nivel internacional.
             </p>
             <a href="#viaje" className="inline-flex items-center gap-2 mt-7 px-7 py-3.5 rounded-full font-semibold text-white transition-all hover:scale-105"
               style={{ background: 'linear-gradient(135deg,#1a6fc4,#0a4f8f)', boxShadow: '0 6px 20px rgba(10,79,143,0.4)' }}>
@@ -69,6 +80,21 @@ export default function ElModelo() {
           </div>
 
         </div>
+
+        {/* Principios Rectores */}
+        <div className="mt-14 sm:mt-20">
+          <p className="text-xs font-semibold tracking-[0.25em] uppercase text-blue-600 mb-6 text-center">Principios Rectores</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {PRINCIPIOS.map((p) => (
+              <div key={p.n} className="p-5 rounded-2xl border border-gray-100 bg-white" style={{ boxShadow: '0 4px 16px rgba(10,79,143,0.05)' }}>
+                <span className="text-2xl font-black" style={{ color: '#1a6fc4', opacity: 0.35 }}>{p.n}</span>
+                <h3 className="font-bold text-gray-900 text-sm mt-2 leading-tight">{p.t}</h3>
+                <p className="text-gray-500 text-xs leading-snug mt-1.5">{p.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   )

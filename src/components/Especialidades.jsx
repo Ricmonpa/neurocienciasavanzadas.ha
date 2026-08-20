@@ -1,12 +1,12 @@
-// Sección "Áreas y Padecimientos"
+// Sección "Áreas y Padecimientos" — áreas principales del Documento Rector
 
 const AREAS = [
-  { t: 'Cirugía de columna', d: 'Técnicas mínimamente invasivas y cirugía robótica de columna vertebral.', icon: (<path d="M12 2v20M8 5h8M8 9h8M8 13h8M8 17h8" />) },
-  { t: 'Neurocirugía', d: 'Tumores cerebrales, aneurismas y patología craneal de alta complejidad.', icon: (<path d="M12 3a7 7 0 00-7 7c0 2 1 3 1 5h12c0-2 1-3 1-5a7 7 0 00-7-7z" />) },
-  { t: 'Neurología', d: 'Epilepsia, cefaleas, esclerosis y trastornos del movimiento.', icon: (<path d="M4 12h4l2-5 4 10 2-5h4" />) },
-  { t: 'Dolor y funcional', d: 'Neuromodulación y manejo integral del dolor crónico.', icon: (<path d="M12 21s-7-4.5-9-9a5 5 0 019-3 5 5 0 019 3c-2 4.5-9 9-9 9z" />) },
-  { t: 'Neurofisiología', d: 'Monitoreo neurofisiológico intraoperatorio y estudios diagnósticos.', icon: (<path d="M3 12h3l2 6 4-14 2 8h5" />) },
-  { t: 'Rehabilitación', d: 'Neurorrehabilitación para el restablecimiento funcional del paciente.', icon: (<path d="M13 3l-2 6h4l-2 6M6 21a3 3 0 100-6 3 3 0 000 6z" />) },
+  { t: 'Enfermedad Vascular Cerebral', d: 'Atención neurovascular aguda y ambulatoria del evento vascular cerebral.', icon: (<path d="M12 21s-7-4.5-9-9a5 5 0 019-3 5 5 0 019 3c-2 4.5-9 9-9 9z" />) },
+  { t: 'Cirugía de Columna Vertebral', d: 'Técnicas mínimamente invasivas y cirugía robótica de columna.', icon: (<path d="M12 2v20M8 5h8M8 9h8M8 13h8M8 17h8" />) },
+  { t: 'Epilepsia', d: 'Diagnóstico y tratamiento integral con soporte neurofisiológico avanzado.', icon: (<path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" />) },
+  { t: 'Neurología Cognitiva y Demencias', d: 'Evaluación de memoria y función cognitiva a lo largo del ciclo de vida.', icon: (<path d="M12 3a7 7 0 00-7 7c0 2 1 3 1 5h12c0-2 1-3 1-5a7 7 0 00-7-7z" />) },
+  { t: 'Trastornos del Movimiento', d: 'Parkinson, espasticidad y movimientos anormales con análisis de la marcha.', icon: (<path d="M13 3l-2 6h4l-2 6M6 21a3 3 0 100-6 3 3 0 000 6z" />) },
+  { t: 'Neurooncología', d: 'Tumores del sistema nervioso con abordaje de tumor board multidisciplinario.', icon: (<path d="M12 3a7 7 0 00-7 7c0 5 7 11 7 11s7-6 7-11a7 7 0 00-7-7z" />) },
 ]
 
 export default function Especialidades() {
@@ -19,8 +19,8 @@ export default function Especialidades() {
             Un centro, todas las neurociencias
           </h2>
           <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Atención integral de las principales áreas y condiciones neurológicas, con rutas de
-            tratamiento personalizadas para cada paciente.
+            Atención de alta complejidad organizada en <strong className="text-gray-700">22 Clínicas de
+            Alta Especialidad</strong>, con rutas de tratamiento personalizadas para cada paciente.
           </p>
         </div>
 
@@ -36,6 +36,26 @@ export default function Especialidades() {
               <p className="text-gray-500 text-sm leading-relaxed">{a.d}</p>
             </div>
           ))}
+        </div>
+
+        {/* Programa de Salud Cerebral (medicina preventiva) */}
+        <div className="mt-6 rounded-3xl p-6 sm:p-8 grid md:grid-cols-[1fr_auto] gap-6 items-center"
+          style={{ background: 'linear-gradient(145deg,#0a4f8f,#021228)', color: '#fff' }}>
+          <div>
+            <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#7fb0e6' }}>Medicina Preventiva</span>
+            <h3 className="font-bold text-xl sm:text-2xl mt-1 mb-2">Programa de Salud Cerebral</h3>
+            <p className="text-blue-100 text-sm leading-relaxed max-w-2xl">
+              Evaluación neurológica preventiva (Brain Health): función cognitiva y memoria, equilibrio y
+              sistema vestibular, función auditiva y factores de riesgo — para la detección temprana y el
+              envejecimiento cerebral saludable.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2 md:justify-end">
+            {['Cognición', 'Equilibrio', 'Audición', 'Prevención'].map((c) => (
+              <span key={c} className="text-xs font-medium px-3 py-1.5 rounded-full text-white"
+                style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.18)' }}>{c}</span>
+            ))}
+          </div>
         </div>
       </div>
     </section>
