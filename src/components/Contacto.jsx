@@ -1,5 +1,7 @@
 // Sección "Contacto / Agendar" + Footer global
 
+const INSTAGRAM_URL = 'https://www.instagram.com/neurocienciasavanzadashap/'
+
 export default function Contacto() {
   return (
     <>
@@ -69,10 +71,19 @@ export default function Contacto() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-8 border-b border-white/10">
             <img src="/logo-oficial-blanco.png" alt="Hospital Angeles — Centro de Neurociencias Avanzadas" className="h-10 w-auto shrink-0 object-contain" />
-            <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm">
               {[['El Modelo', '#modelo'], ['Viaje del Paciente', '#viaje'], ['Especialidades', '#especialidades'], ['Equipo', '#equipo'], ['Revista', '#revista'], ['Contacto', '#contacto']].map(([l, h]) => (
                 <a key={h} href={h} className="text-blue-200 hover:text-white transition-colors">{l}</a>
               ))}
+              <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-xl transition-colors"
+                style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}>
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#dbeafe" strokeWidth="1.8">
+                  <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+                  <circle cx="12" cy="12" r="4.2" />
+                  <circle cx="17.4" cy="6.6" r="1.1" fill="#dbeafe" stroke="none" />
+                </svg>
+              </a>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-6">

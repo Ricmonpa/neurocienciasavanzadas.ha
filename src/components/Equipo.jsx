@@ -41,6 +41,9 @@ function ClinicaCard({ item, color }) {
         <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: color }} />
         <h4 className="font-bold text-gray-900 text-sm leading-tight">{item.c}</h4>
       </div>
+      <p className="text-[0.6rem] font-semibold uppercase tracking-wider text-gray-400 pl-3.5 mb-1">
+        {item.co.length > 1 ? 'Coordinadores' : 'Coordinador(a)'}
+      </p>
       <ul className="space-y-1 pl-3.5">
         {item.co.map((name) => (
           <li key={name} className="text-xs text-gray-600 leading-snug">{name}</li>
