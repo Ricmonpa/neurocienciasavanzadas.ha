@@ -1,7 +1,7 @@
 // Sección "Resultados / Casos" — métricas de autoridad + testimonios
 
 const KPIS = [
-  { v: '+600', l: 'Especialistas Certificados' },
+  { v: '+60', l: 'Especialistas Certificados' },
   { v: '4', l: 'Órbitas Clínicas Integradas' },
   { v: '98%', l: 'Satisfacción de Pacientes' },
   { v: 'IA', l: 'Diagnóstico Asistido' },

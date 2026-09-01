@@ -91,7 +91,7 @@ export default function Equipo() {
             </h3>
             <p className="text-blue-700 font-medium mt-1">Neurocirugía · Cirugía mínimamente invasiva de columna</p>
             <div className="flex flex-wrap gap-2 mt-4">
-              {['2º Vicepresidente WFNS', 'Ex Presidente SILACO', 'Fundador SICCMI', 'Embajador UNESCO'].map((c) => (
+              {['Past Second Vice President · WFNS', 'Pionero de la Cirugía MIS de Columna', 'Fundador SICCMI', 'Embajador UNESCO', 'Académico AMC', 'WANS'].map((c) => (
                 <span key={c} className="text-xs font-medium px-3 py-1.5 rounded-full"
                   style={{ background: '#e8f1fb', color: '#0a4f8f', border: '1px solid rgba(10,79,143,0.15)' }}>
                   {c}

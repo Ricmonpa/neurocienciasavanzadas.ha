@@ -12,11 +12,11 @@ const PRESIDENCIAS = [
 ]
 
 const DISTINCIONES = [
-  'Segundo Vicepresidente · Federación Mundial de Sociedades de Neurocirugía (WFNS)',
+  'Past Second Vice President of the WFNS by the FLANC',
   'Presidente Honorario · Federación Mundial de Cirugía de Columna Mínimamente Invasiva (WFMISS)',
   'Embajador de Anatomía Digital para América Latina · UNESCO',
   'Ex miembro del Spine Committee · WFNS',
-  'Miembro · Academia Mexicana de Cirugía (AMC)',
+  'Académico · Academia Mexicana de Cirugía (AMC)',
   'Miembro · World Academy of Neurological Surgery (WANS)',
 ]
 
@@ -52,6 +52,7 @@ export default function DoctorProfile() {
               Dr. José Antonio<br className="hidden sm:block" /> Soriano Sánchez
             </h1>
             <p className="text-blue-100 text-lg mt-3">Neurocirugía · Cirugía mínimamente invasiva de columna</p>
+            <p className="text-blue-300 text-sm mt-2 font-medium">Pionero de la Cirugía Mínimamente Invasiva de Columna</p>
 
             <div className="flex flex-wrap gap-3 justify-center md:justify-start mt-6">
               <button className="px-7 py-3.5 rounded-full font-semibold text-white"
@@ -69,7 +70,7 @@ export default function DoctorProfile() {
         <div className="relative max-w-5xl mx-auto grid grid-cols-3 gap-4 mt-12">
           {[
             { v: 'HAP', l: 'Director del Centro' },
-            { v: 'WFNS', l: '2º Vicepresidente Mundial' },
+            { v: 'WFNS', l: 'Past Second Vice President' },
             { v: 'UNESCO', l: 'Embajador de Anatomía Digital' },
           ].map((s) => (
             <div key={s.l} className="text-center rounded-2xl py-4 px-2"
