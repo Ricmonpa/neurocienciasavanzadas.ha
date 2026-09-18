@@ -1,8 +1,116 @@
-// Sección "Contacto / Agendar" + Footer global
+// Sección "Contacto / Agendar" + Footer global + Aviso de Privacidad
+import { useState } from 'react'
 
 const INSTAGRAM_URL = 'https://www.instagram.com/neurocienciasavanzadashap/'
 
+// Las solicitudes llegan a estos correos (FormSubmit: primario + copia)
+const MAIL_PRINCIPAL = 'centroneurocienciasavanzadas@gmail.com'
+const MAIL_CC = 'e.fonseca@potenttial.com'
+const FORM_ENDPOINT = `https://formsubmit.co/ajax/${MAIL_PRINCIPAL}`
+
+function ContactForm({ onOpenAviso }) {
+  const [form, setForm] = useState({ nombre: '', telefono: '', correo: '', motivo: '' })
+  const [consent, setConsent] = useState(false)
+  const [status, setStatus] = useState('idle') // idle | sending | ok | error
+  const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
+
+  async function submit(e) {
+    e.preventDefault()
+    if (!consent) { setStatus('needsConsent'); return }
+    setStatus('sending')
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          Nombre: form.nombre,
+          Teléfono: form.telefono,
+          Correo: form.correo,
+          'Motivo de consulta': form.motivo,
+          _cc: MAIL_CC,
+          _subject: 'Nueva solicitud de informes — Centro de Neurociencias',
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      })
+      if (res.ok) { setStatus('ok'); setForm({ nombre: '', telefono: '', correo: '', motivo: '' }); setConsent(false) }
+      else setStatus('error')
+    } catch { setStatus('error') }
+  }
+
+  if (status === 'ok') {
+    return (
+      <div className="rounded-3xl p-8 sm:p-10 text-center" style={{ background: 'rgba(255,255,255,0.97)', boxShadow: '0 20px 60px rgba(2,18,40,0.4)' }}>
+        <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: '#ecfdf5' }}>
+          <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        </div>
+        <h3 className="font-bold text-gray-900 text-xl mb-1">¡Solicitud enviada!</h3>
+        <p className="text-gray-500 text-sm">Gracias. Nuestro equipo te contactará en menos de 24 horas hábiles.</p>
+      </div>
+    )
+  }
+
+  const inputCls = 'w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-blue-500'
+  return (
+    <form onSubmit={submit} className="rounded-3xl p-6 sm:p-8" style={{ background: 'rgba(255,255,255,0.97)', boxShadow: '0 20px 60px rgba(2,18,40,0.4)' }}>
+      <div className="space-y-4">
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div><label className="block text-xs font-semibold text-gray-500 mb-1.5">Nombre</label><input required value={form.nombre} onChange={set('nombre')} className={inputCls} placeholder="Tu nombre" /></div>
+          <div><label className="block text-xs font-semibold text-gray-500 mb-1.5">Teléfono</label><input required value={form.telefono} onChange={set('telefono')} className={inputCls} placeholder="Tu teléfono" /></div>
+        </div>
+        <div><label className="block text-xs font-semibold text-gray-500 mb-1.5">Correo</label><input required type="email" value={form.correo} onChange={set('correo')} className={inputCls} placeholder="tu@correo.com" /></div>
+        <div><label className="block text-xs font-semibold text-gray-500 mb-1.5">Motivo de consulta</label><textarea rows="3" value={form.motivo} onChange={set('motivo')} className={inputCls + ' resize-none'} placeholder="Cuéntanos brevemente" /></div>
+
+        {/* Consentimiento / Aviso de Privacidad */}
+        <label className="flex items-start gap-2.5 cursor-pointer">
+          <input type="checkbox" checked={consent} onChange={(e) => { setConsent(e.target.checked); if (status === 'needsConsent') setStatus('idle') }}
+            className="mt-0.5 w-4 h-4 flex-shrink-0 accent-blue-700" />
+          <span className="text-xs text-gray-500 leading-snug">
+            He leído y acepto el{' '}
+            <button type="button" onClick={onOpenAviso} className="text-blue-700 font-semibold underline">Aviso de Privacidad</button>{' '}
+            y autorizo el tratamiento de mis datos personales para ser contactado.
+          </span>
+        </label>
+
+        {status === 'needsConsent' && <p className="text-xs text-red-500">Debes aceptar el Aviso de Privacidad para continuar.</p>}
+        {status === 'error' && <p className="text-xs text-red-500">Ocurrió un error al enviar. Intenta de nuevo o escríbenos por WhatsApp.</p>}
+
+        <button type="submit" disabled={status === 'sending'}
+          className="w-full py-4 rounded-full font-semibold text-white transition-all hover:scale-[1.02] disabled:opacity-60 disabled:hover:scale-100"
+          style={{ background: 'linear-gradient(135deg,#1a6fc4,#0a4f8f)', boxShadow: '0 8px 24px rgba(10,79,143,0.4)' }}>
+          {status === 'sending' ? 'Enviando…' : 'Solicitar informes'}
+        </button>
+        <p className="text-center text-gray-400 text-xs">Te contactaremos en menos de 24 horas hábiles.</p>
+      </div>
+    </form>
+  )
+}
+
+function AvisoPrivacidad({ onClose }) {
+  return (
+    <div className="fixed inset-0 z-[80] flex items-center justify-center p-4" style={{ background: 'rgba(2,18,40,0.6)', backdropFilter: 'blur(4px)' }} onClick={onClose}>
+      <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-start justify-between gap-4 mb-4">
+          <h2 className="font-bold text-gray-900 text-xl" style={{ letterSpacing: '-0.01em' }}>Aviso de Privacidad</h2>
+          <button onClick={onClose} aria-label="Cerrar" className="text-gray-400 hover:text-gray-700 text-2xl leading-none">×</button>
+        </div>
+        <div className="space-y-3 text-sm text-gray-600 leading-relaxed">
+          <p><strong className="text-gray-800">Responsable.</strong> El Centro de Neurociencias Avanzadas del Hospital Ángeles Pedregal (en lo sucesivo, "el Centro"), con domicilio en Ciudad de México, es responsable del tratamiento de sus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP).</p>
+          <p><strong className="text-gray-800">Datos que recabamos.</strong> Nombre, teléfono, correo electrónico y el motivo de consulta que usted proporcione. La información relacionada con su estado de salud constituye un dato personal sensible y solo será tratada con su consentimiento expreso.</p>
+          <p><strong className="text-gray-800">Finalidades.</strong> (i) Atender su solicitud de informes o cita; (ii) contactarle para brindarle orientación médica y agendar su valoración; (iii) dar seguimiento a su solicitud. De manera secundaria, podríamos enviarle información institucional, la cual usted puede rechazar.</p>
+          <p><strong className="text-gray-800">Transferencias.</strong> Sus datos no serán transferidos a terceros sin su consentimiento, salvo en los casos previstos por la ley. Para operar este formulario utilizamos proveedores tecnológicos que procesan el envío del mensaje por cuenta del Centro.</p>
+          <p><strong className="text-gray-800">Derechos ARCO.</strong> Usted puede Acceder, Rectificar, Cancelar u Oponerse al tratamiento de sus datos, así como revocar su consentimiento, escribiendo a <a href={`mailto:${MAIL_PRINCIPAL}`} className="text-blue-700 underline">{MAIL_PRINCIPAL}</a>.</p>
+          <p><strong className="text-gray-800">Cambios.</strong> Este aviso puede actualizarse; la versión vigente estará disponible en este sitio.</p>
+          <p className="text-xs text-gray-400 border-t border-gray-100 pt-3">Documento de referencia — pendiente de validación por el área legal del Centro (responsable, domicilio fiscal y medio de contacto ARCO definitivos).</p>
+        </div>
+        <button onClick={onClose} className="mt-6 w-full py-3 rounded-full font-semibold text-white" style={{ background: 'linear-gradient(135deg,#1a6fc4,#0a4f8f)' }}>Entendido</button>
+      </div>
+    </div>
+  )
+}
+
 export default function Contacto() {
+  const [avisoOpen, setAvisoOpen] = useState(false)
   return (
     <>
       <section id="contacto" className="py-16 sm:py-24 px-4 sm:px-6 relative overflow-hidden"
@@ -47,22 +155,7 @@ export default function Contacto() {
             </div>
           </div>
 
-          {/* Formulario (demo, sin envío) */}
-          <div className="rounded-3xl p-6 sm:p-8" style={{ background: 'rgba(255,255,255,0.97)', boxShadow: '0 20px 60px rgba(2,18,40,0.4)' }}>
-            <div className="space-y-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div><label className="block text-xs font-semibold text-gray-500 mb-1.5">Nombre</label><input className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-blue-500" placeholder="Tu nombre" /></div>
-                <div><label className="block text-xs font-semibold text-gray-500 mb-1.5">Teléfono</label><input className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-blue-500" placeholder="Tu teléfono" /></div>
-              </div>
-              <div><label className="block text-xs font-semibold text-gray-500 mb-1.5">Correo</label><input className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-blue-500" placeholder="tu@correo.com" /></div>
-              <div><label className="block text-xs font-semibold text-gray-500 mb-1.5">Motivo de consulta</label><textarea rows="3" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-blue-500 resize-none" placeholder="Cuéntanos brevemente" /></div>
-              <button type="button" className="w-full py-4 rounded-full font-semibold text-white transition-all hover:scale-[1.02]"
-                style={{ background: 'linear-gradient(135deg,#1a6fc4,#0a4f8f)', boxShadow: '0 8px 24px rgba(10,79,143,0.4)' }}>
-                Solicitar cita
-              </button>
-              <p className="text-center text-gray-400 text-xs">Te contactaremos en menos de 24 horas hábiles.</p>
-            </div>
-          </div>
+          <ContactForm onOpenAviso={() => setAvisoOpen(true)} />
         </div>
       </section>
 
@@ -88,10 +181,15 @@ export default function Contacto() {
           </div>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-6">
             <p className="text-blue-400 text-xs">© 2026 Hospital Angeles · Centro de Neurociencias Avanzadas</p>
-            <p className="text-blue-500 text-xs">Innovación con IA médica · N3 Labs</p>
+            <div className="flex items-center gap-4">
+              <button onClick={() => setAvisoOpen(true)} className="text-blue-300 hover:text-white text-xs underline">Aviso de Privacidad</button>
+              <p className="text-blue-500 text-xs">Innovación con IA médica · N3 Labs</p>
+            </div>
           </div>
         </div>
       </footer>
+
+      {avisoOpen && <AvisoPrivacidad onClose={() => setAvisoOpen(false)} />}
     </>
   )
 }
