@@ -8,7 +8,7 @@ const ARTICULOS = [
     image: '/articulos/cirugia-robotica-columna.jpg',
     link: '/articulos/cirugia-robotica-de-columna.html',
     category: 'Cirugía de Columna',
-    author: 'Priscila Alvarado',
+    author: 'Priscila Alvarado Solana',
   },
 ]
 

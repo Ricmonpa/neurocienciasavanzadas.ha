@@ -47,9 +47,13 @@
   .steps li{ position:relative; padding:14px 16px 14px 18px; margin-bottom:10px; background:#f7f9fc; border-left:4px solid var(--blue-l); border-radius:0 10px 10px 0; font-size:16px; color:var(--soft); }
   .steps strong{ color:var(--ink); }
   /* Autor */
-  .author{ display:flex; gap:14px; align-items:center; background:var(--pale); border-radius:14px; padding:16px 18px; margin:30px 0; }
-  .author .av{ width:46px; height:46px; border-radius:50%; background:linear-gradient(135deg,var(--blue-l),var(--blue)); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; flex-shrink:0; }
-  .author .n{ font-weight:700; color:var(--ink); font-size:14px; } .author .r{ font-size:12px; color:var(--muted); }
+  .author{ display:flex; gap:16px; align-items:flex-start; background:var(--pale); border:1px solid rgba(10,79,143,.12); border-radius:16px; padding:18px 20px; margin:30px 0; }
+  .author img.av-img{ width:62px; height:62px; border-radius:50%; object-fit:cover; flex-shrink:0; border:2px solid #fff; box-shadow:0 3px 10px rgba(10,79,143,.2); }
+  .author .n{ font-weight:700; color:var(--ink); font-size:15px; }
+  .author .r{ font-size:12px; color:var(--blue); font-weight:600; margin-top:1px; }
+  .author .bio{ font-size:13px; color:var(--soft); margin:8px 0 7px; line-height:1.55; }
+  .author .link{ font-size:12px; font-weight:600; color:var(--blue); text-decoration:none; }
+  .author .link:hover{ text-decoration:underline; }
   /* FAQ */
   .faq{ margin-top:30px; }
   .faq h2{ margin-bottom:14px; }
@@ -131,8 +135,13 @@
     <p>A nivel internacional, es <strong>Segundo Vicepresidente</strong> de la World Federation of Neurosurgical Societies (WFNS), académico de la World Academy of Neurological Surgery (WANS) y expresidente de la Federación Latinoamericana de Sociedades de Neurocirugía (FLANC). En 2011 fundó el primer programa de tutoría en cirugía de mínima invasión de América Latina, apostando por un enfoque multidisciplinario (neurofisiología, algología y psiquiatría) para tratar el dolor crónico.</p>
 
     <div class="author">
-      <div class="av">PA</div>
-      <div><div class="n">Priscila Alvarado</div><div class="r">Redacción · Neurona Magazine</div></div>
+      <img class="av-img" src="/articulos/priscila-alvarado.jpg" alt="Priscila Alvarado Solana" />
+      <div>
+        <div class="n">Priscila Alvarado Solana</div>
+        <div class="r">Periodista y neuroescritora · Directora de Neurona Magazine</div>
+        <p class="bio">Fundadora de Banshee Editorial y catedrática universitaria. Fusiona periodismo, literatura y neurociencia para decodificar el impacto de las palabras en la mente humana.</p>
+        <a class="link" href="https://neuronamagazine.com/author/priscila/" target="_blank" rel="noopener">Ver perfil en Neurona Magazine →</a>
+      </div>
     </div>
 
     <section class="faq">
