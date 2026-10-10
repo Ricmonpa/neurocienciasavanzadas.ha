@@ -14,6 +14,7 @@ import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { createClient } from '@sanity/client'
 import { renderArticulo, imgUrl, SITE } from './articulo-template.mjs'
+import { renderLlmsTxt } from './llms-txt.mjs'
 
 const OUT = path.resolve(process.argv.includes('--out') ? process.argv[process.argv.indexOf('--out') + 1] : 'dist')
 
@@ -72,4 +73,16 @@ ${urls.map((u) => `  <url><loc>${u}</loc>${lastmod[u] ? `<lastmod>${lastmod[u]}<
 </urlset>
 `
 await writeFile(path.join(OUT, 'sitemap.xml'), sitemap)
-console.log(`[articulos] ${articulos.length} artículo(s) + index.json + sitemap.xml`)
+
+// robots.txt: todo abierto (incluidos bots de IA) y apunta al sitemap
+await writeFile(path.join(OUT, 'robots.txt'), `User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: ${SITE}/sitemap.xml
+`)
+
+// llms.txt (llmstxt.org): índice del sitio para asistentes de IA
+await writeFile(path.join(OUT, 'llms.txt'), renderLlmsTxt(articulos))
+
+console.log(`[articulos] ${articulos.length} artículo(s) + index.json + sitemap.xml + robots.txt + llms.txt`)
