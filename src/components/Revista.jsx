@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 
-// Artículos editoriales propios del Centro (Fase 2: vendrán del CMS)
-const ARTICULOS = [
+// Artículos editoriales propios del Centro. En producción vienen de Sanity vía
+// /articulos/index.json (lo genera scripts/build-articulos.mjs); esta lista es el respaldo.
+const FALLBACK_ARTICULOS = [
   {
     title: '¿Qué es la cirugía robótica de columna y cómo elimina el dolor de espalda?',
     excerpt: 'Cirugía mínimamente invasiva con el robot Mazor X, liderada por el Dr. José Antonio Soriano Sánchez: menos dolor, menos analgésicos y recuperación el mismo día.',
@@ -29,9 +30,14 @@ function fmtDate(iso) {
 export default function Revista() {
   const [news, setNews] = useState(FALLBACK_NEWS)
   const [auto, setAuto] = useState(false)
+  const [articulos, setArticulos] = useState(FALLBACK_ARTICULOS)
 
   useEffect(() => {
     let alive = true
+    fetch('/articulos/index.json')
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((data) => { if (alive && data?.items?.length) setArticulos(data.items) })
+      .catch(() => {})
     fetch('/api/noticias')
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((data) => { if (alive && data?.items?.length) { setNews(data.items); setAuto(true) } })
@@ -39,7 +45,7 @@ export default function Revista() {
     return () => { alive = false }
   }, [])
 
-  const destacado = ARTICULOS[0]
+  const [destacado, ...masArticulos] = articulos
   const newsList = news.slice(0, 3)
   const img = (a, i) => a.image || FALLBACK_IMGS[i % FALLBACK_IMGS.length]
 
@@ -75,6 +81,23 @@ export default function Revista() {
             </div>
           </div>
         </a>
+
+        {masArticulos.length > 0 && (
+          <div className="grid sm:grid-cols-3 gap-4 -mt-6 mb-12">
+            {masArticulos.slice(0, 3).map((a) => (
+              <a key={a.link} href={a.link}
+                className="group bg-white rounded-2xl overflow-hidden border border-gray-100 transition-all hover:-translate-y-1 flex flex-col"
+                style={{ boxShadow: '0 4px 16px rgba(10,79,143,0.05)' }}>
+                <img src={a.image} alt="" className="w-full h-40 object-cover" />
+                <div className="p-5 flex flex-col flex-1">
+                  <span className="text-[0.65rem] font-bold uppercase tracking-wider text-blue-700">{a.category}</span>
+                  <h4 className="font-semibold text-gray-900 text-sm leading-snug mt-1.5 flex-1">{a.title}</h4>
+                  <p className="text-gray-400 text-xs mt-2">Por {a.author}{fmtDate(a.date) ? ` · ${fmtDate(a.date)}` : ''}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
 
         {/* ── Noticias de neurociencia (curadas) ── */}
         <div className="flex items-center justify-between mb-4">

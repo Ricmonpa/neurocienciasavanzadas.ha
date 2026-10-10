@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/build-articulos.mjs",
+    "articulos:preview": "node scripts/build-articulos.mjs --local",
+    "articulos:migrar": "node scripts/migrar-a-sanity.mjs",
+    "studio": "npm --prefix studio run dev",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -16,6 +19,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@portabletext/to-html": "^6.0.0",
+    "@sanity/client": "^8.9.0",
     "@tailwindcss/vite": "^4.3.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
