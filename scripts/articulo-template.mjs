@@ -3,7 +3,7 @@
 // JSON-LD MedicalWebPage + FAQPage.
 import { toHTML, escapeHTML } from '@portabletext/to-html'
 
-export const SITE = 'https://centroneurociencias.org'
+export const SITE = 'https://www.centroneurociencias.org'
 const SITE_NAME = 'Centro de Neurociencias Avanzadas'
 const PUBLISHER = 'Centro de Neurociencias Avanzadas — Hospital Ángeles Pedregal'
 
