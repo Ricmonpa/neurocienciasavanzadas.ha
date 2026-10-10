@@ -25,38 +25,17 @@ Proyecto Sanity: **e3spfcgz** / dataset `production` (público: los borradores n
 Studio: <https://neurociencias-revista.sanity.studio>. Si Sanity responde con error, el
 build falla y Vercel conserva el deploy anterior.
 
-## Puesta en marcha (una sola vez)
+## Configuración (ya hecha el 2026-10-10)
 
-1. **Crear proyecto** en <https://www.sanity.io/manage> → *Create project*
-   (plan Free, dataset `production`, visibilidad **Public**). Anotar el **Project ID**.
-2. **Studio local**: copiar `studio/.env.example` a `studio/.env` con el Project ID y luego
-   ```bash
-   cd studio && npm install && npx sanity login && npm run dev
-   ```
-   Abre <http://localhost:3333>.
-3. **Publicar el Studio** (para que el equipo editorial entre desde el navegador):
-   ```bash
-   cd studio && npm run deploy
-   ```
-   Queda en `https://neurociencias-revista.sanity.studio` (cambiar `studioHost` en
-   `studio/sanity.cli.js` si ese nombre está tomado).
-4. **Invitar editores**: sanity.io/manage → proyecto → *Members* → *Invite* (rol *Editor*).
-5. **Migrar el primer artículo**: sanity.io/manage → *API* → *Tokens* → *Add API token*
-   (permiso *Editor*). Luego, desde `neuro-app/`:
-   ```bash
-   SANITY_PROJECT_ID=xxxx SANITY_WRITE_TOKEN=sk... npm run articulos:migrar
-   ```
-   Después de migrar, borrar ese token (solo se usa una vez).
-6. **Vercel** → Settings → Environment Variables: `SANITY_PROJECT_ID` y
-   `SANITY_DATASET=production` (Production y Preview).
-7. **Auto-publicar**:
-   - Vercel → Settings → Git → *Deploy Hooks* → crear uno (rama `main`) y copiar la URL.
-   - sanity.io/manage → *API* → *Webhooks* → *Create webhook*: URL = la del Deploy Hook,
-     dataset `production`, *Trigger on* Create/Update/Delete, filtro
-     `_type in ["articulo", "autor"]`, método POST.
-8. Redeploy en Vercel. Cuando el artículo de Sanity esté en vivo, se puede borrar
-   `public/articulos/cirugia-robotica-de-columna.html` (las imágenes de `public/articulos/`
-   pueden quedarse).
+- Proyecto Sanity `e3spfcgz`, dataset `production` público. Dueño: cuenta Google de Ricardo.
+- Studio desplegado con `cd studio && npm run deploy` (requiere `npx sanity login`).
+- Primer artículo migrado con `scripts/migrar-a-sanity.mjs`.
+- Vercel → proyecto `neurocienciasavanzadas-ha` → Settings → Git → Deploy Hook **"Sanity CMS"** (rama `main`).
+- Sanity → API → Webhooks → **"Vercel deploy (Revista)"**: llama al Deploy Hook al crear/editar/borrar
+  documentos `articulo` o `autor` publicados.
+- No se necesitan variables de entorno en Vercel (el Project ID está en el código).
+
+**Agregar editores:** sanity.io/manage → proyecto → *Members* → *Invite* (rol *Editor*).
 
 ## Uso diario (equipo editorial)
 
