@@ -1,5 +1,6 @@
 import Header from './components/Header'
 import HeroSection from './components/HeroSection'
+import CirugiaColumna from './components/CirugiaColumna'
 import ElModelo from './components/ElModelo'
 import PatientJourney from './components/PatientJourney'
 import Especialidades from './components/Especialidades'
@@ -18,6 +19,7 @@ export default function App() {
       <Header />
       <main id="top" className="w-full">
         <HeroSection />
+        <CirugiaColumna />
         <ElModelo />
         <PatientJourney />
         <Especialidades />

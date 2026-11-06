@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 
 const LINKS = [
+  { href: '#columna', label: 'Cirugía de Columna' },
   { href: '#modelo', label: 'El Modelo' },
   { href: '#viaje', label: 'El Viaje' },
   { href: '#especialidades', label: 'Especialidades' },
