@@ -1,4 +1,6 @@
 // Botón flotante de WhatsApp — Centro de Neurociencias HAP
+import { trackWhatsApp } from '../lib/ads'
+
 const WA_URL =
   'https://wa.me/5215516647108?text=' +
   encodeURIComponent('Hola, me gustaría agendar una cita en el Centro de Neurociencias Avanzadas.')
@@ -9,6 +11,7 @@ export default function WhatsAppFloat() {
       href={WA_URL}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={trackWhatsApp}
       aria-label="Contactar por WhatsApp"
       className="fixed z-[60] bottom-5 right-5 sm:bottom-7 sm:right-7 flex items-center gap-2.5 rounded-full pl-3.5 pr-4 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105"
       style={{ background: '#25D366', boxShadow: '0 8px 28px rgba(37,211,102,0.45)' }}
