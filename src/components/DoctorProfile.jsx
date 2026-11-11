@@ -55,10 +55,10 @@ export default function DoctorProfile() {
             <p className="text-blue-300 text-sm mt-2 font-medium">Pionero de la Cirugía Mínimamente Invasiva de Columna</p>
 
             <div className="flex flex-wrap gap-3 justify-center md:justify-start mt-6">
-              <button className="px-7 py-3.5 rounded-full font-semibold text-white"
+              <a href="#contacto" className="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-semibold text-white transition-transform hover:scale-105"
                 style={{ background: 'linear-gradient(135deg, #1a6fc4, #0a4f8f)', boxShadow: '0 8px 24px rgba(10,79,143,0.5)' }}>
                 Agendar consulta →
-              </button>
+              </a>
               <a href="#top" className="px-7 py-3.5 rounded-full font-semibold text-white border border-white/30 hover:bg-white/10 transition-colors">
                 Conocer el Centro
               </a>
@@ -132,7 +132,7 @@ export default function DoctorProfile() {
             style={{ background: 'linear-gradient(145deg, #0a4f8f, #021228)', color: '#fff' }}>
             <h3 className="font-bold text-2xl sm:text-3xl">¿Listo para tu consulta?</h3>
             <p className="text-blue-100 mt-2 mb-6">Agenda directamente con el Dr. Soriano Sánchez.</p>
-            <button className="px-8 py-4 rounded-full font-bold text-blue-900 bg-white">Agendar consulta</button>
+            <a href="#contacto" className="inline-flex items-center justify-center px-8 py-4 rounded-full font-bold text-blue-900 bg-white transition-transform hover:scale-105">Agendar consulta</a>
           </div>
         </div>
       </div>
